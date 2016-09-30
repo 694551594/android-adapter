@@ -39,6 +39,9 @@ public final class ItemViewContainer<Adapter> {
    * @return
    */
   public ItemView<Adapter> getByKey(int key) {
+    if (this.mItemViewKeys.indexOfKey(key) == -1) {
+      return null;
+    }
     return this.getByType(this.mItemViewKeys.get(key));
   }
 

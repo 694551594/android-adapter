@@ -20,12 +20,12 @@ public final class ChildItemViewProviderFactory<G, C>
     super(context, adapter);
   }
 
-  public void setChildItemViewProviderKeyPolicy(
+  public final void setChildItemViewProviderKeyPolicy(
       IChildItemViewProviderKeyPolicy<G, C> childItemViewProviderKeyPolicy) {
     this.mChildItemViewProviderKeyPolicy = childItemViewProviderKeyPolicy;
   }
 
-  private ChildItemViewProvider1<G, C> obtainItemViewProvider(final int groupPosition,
+  private final ChildItemViewProvider1<G, C> obtainItemViewProvider(final int groupPosition,
                                                               final G groupEntity, final int childPosition, final C childEntity) {
     return this.obtainItemView(new IItemViewKeyPolicy() {
       @Override
@@ -48,19 +48,19 @@ public final class ChildItemViewProviderFactory<G, C>
     });
   }
 
-  public int getItemViewType(int groupPosition, G groupEntity, int childPosition, C childEntity) {
+  public final int getItemViewType(int groupPosition, G groupEntity, int childPosition, C childEntity) {
     return obtainItemViewProvider(groupPosition, groupEntity, childPosition, childEntity).getType();
   }
 
-  public int getItemViewTypeCount() {
+  public final int getItemViewTypeCount() {
     return this.getItemViewSize();
   }
 
-  public List<ChildItemViewProvider1<G, C>> getAllItemViewProvider() {
+  public final List<ChildItemViewProvider1<G, C>> getAllItemViewProvider() {
     return this.getAllItemView();
   }
 
-  public View setupView(int groupPosition, G groupEntity, int childPosition, C childEntity,
+  public final View setupView(int groupPosition, G groupEntity, int childPosition, C childEntity,
       View convertView, ViewGroup parent) {
     try {
       // 获取该item类型的视图提供器
@@ -81,7 +81,7 @@ public final class ChildItemViewProviderFactory<G, C>
     }
   }
 
-  public ChildItemViewProvider1<G, C> getItemViewProviderByKey(int key) {
+  public final ChildItemViewProvider1<G, C> getItemViewProviderByKey(int key) {
     return this.getItemViewByKey(key);
   }
 

@@ -1,4 +1,4 @@
-package cn.yhq.adapter;
+package cn.yhq.adapter.app;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getTargetContext();
 
-        assertEquals("cn.yhq.adapter", appContext.getPackageName());
+        assertEquals("cn.yhq.adapter.app", appContext.getPackageName());
     }
 }

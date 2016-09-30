@@ -1,4 +1,4 @@
-package cn.yhq.adapter;
+package cn.yhq.adapter.app;
 
 import org.junit.Test;
 

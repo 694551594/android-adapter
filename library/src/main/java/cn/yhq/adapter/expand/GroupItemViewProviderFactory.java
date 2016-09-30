@@ -20,12 +20,12 @@ public final class GroupItemViewProviderFactory<T>
     super(context, adapter);
   }
 
-  public void setGroupItemViewProviderKeyPolicy(
+  public final void setGroupItemViewProviderKeyPolicy(
       IGroupItemViewProviderKeyPolicy<T> groupItemViewProviderKeyPolicy) {
     this.mGroupItemViewProviderKeyPolicy = groupItemViewProviderKeyPolicy;
   }
 
-  private GroupItemViewProvider1<T> obtainItemViewProvider(final int position, final T entity) {
+  private final GroupItemViewProvider1<T> obtainItemViewProvider(final int position, final T entity) {
     return this.obtainItemView(new IItemViewKeyPolicy() {
       @Override
       public int getItemViewKey() {
@@ -45,19 +45,19 @@ public final class GroupItemViewProviderFactory<T>
     });
   }
 
-  public int getItemViewType(int position, T entity) {
+  public final int getItemViewType(int position, T entity) {
     return obtainItemViewProvider(position, entity).getType();
   }
 
-  public List<GroupItemViewProvider1<T>> getAllItemViewProvider() {
+  public final List<GroupItemViewProvider1<T>> getAllItemViewProvider() {
     return this.getAllItemView();
   }
 
-  public int getItemViewTypeCount() {
+  public final int getItemViewTypeCount() {
     return this.getItemViewSize();
   }
 
-  public View setupView(int position, T entity, View convertView, ViewGroup parent,
+  public final View setupView(int position, T entity, View convertView, ViewGroup parent,
       boolean isExpanded) {
     try {
       // 获取该item类型的视图提供器
@@ -75,7 +75,7 @@ public final class GroupItemViewProviderFactory<T>
     }
   }
 
-  public GroupItemViewProvider1<T> getItemViewProviderByKey(int key) {
+  public final GroupItemViewProvider1<T> getItemViewProviderByKey(int key) {
     return this.getItemViewByKey(key);
   }
 }
