@@ -1,7 +1,7 @@
 # android-adapter
 android极简adapter，支持list-adapter、expandable-list-adapter以及recycler-adapter，可以非常方便的创建单type以及多type的adapter。
 ### 1、创建最简单的adapter（单type）
-#####（1）类似List<T>的数据(单List，即ListView或者GridView适配的adapter)，使用SimpleListAdapter即可，代码如下：
+#####（1）类似`List<T>`的数据(单List，即ListView或者GridView适配的adapter)，使用SimpleListAdapter即可，代码如下：
 
 
     SimpleListAdapter<String> adapter = SimpleListAdapter.create(this, getDatas(), R.layout.layout_item1,
@@ -13,7 +13,7 @@ android极简adapter，支持list-adapter、expandable-list-adapter以及recycle
             });
     listView.setAdapter(adapter);
 
-#####（2）类似List<List>的数据（List里面嵌套List，即ExpandableListView适配的adapter），使用SimpleExpandableListAdapter即可，代码如下：
+#####（2）类似`List<List<T>>`的数据（List里面嵌套List，即ExpandableListView适配的adapter），使用SimpleExpandableListAdapter即可，代码如下：
 
 
     SimpleExpandableListAdapter<Group, Child> adapter =
@@ -51,7 +51,7 @@ android极简adapter，支持list-adapter、expandable-list-adapter以及recycle
           }
         });
 #####（4）当然，如果你不想使用自带的Simple**Adapter，你可以使用上述三种对应的ListAdapter、BaseExpandableListAdapter、RecyclerListAdapter去实现自己的adapter。
-#####（5）如果你的数据类型不是List<T>这种的，比如是JsonArray或者Object {List<T>}这种的，就需要继承BaseAdapter<L, I>、BaseExpandableAdapter<L, G, C>、RecyclerBaseAdapter<L, I>去实现自己的adapter，这里举一个自定义ListAdapter的例子：
+#####（5）如果你的数据类型不是`List<T>`这种的，比如是`JsonArray`或者`Object {List<T>}`这种的，就需要继承`BaseAdapter<L, I>`、`BaseExpandableAdapter<L, G, C>`、`RecyclerBaseAdapter<L, I>`去实现自己的adapter，这里举一个自定义ListAdapter的例子：
 
 
     public class ListObjectAdapter extends BaseAdapter<ListObject, String> {
