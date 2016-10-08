@@ -115,7 +115,10 @@ android极简adapter，支持list-adapter、expandable-list-adapter以及recycle
 3. 多type的adapter创建方式有两种，一种是根据key值注册视图提供器，一种是直接注册带选择器的视图提供器。这里分别举例说明：
 #####（1）根据key去注册视图提供器
 此种方式通过调用adapter的register(key，ItemViewProvider1)方法去注册对应类型的视图提供器，此外还需要通过setItemViewProviderKeyPolicy设置视图提供器key的选择策略，用来确定某个item该用哪个视图提供器进行渲染，现在我们写一个有两种类型的item的adapter：
-public class MutipleTypeListAdapter1 extends ListAdapter<MutipleTypeObject> {
+######示例代码
+
+
+    public class MutipleTypeListAdapter1 extends ListAdapter<MutipleTypeObject> {
       public final static int TYPE_1 = 1;
       public final static int TYPE_2 = 2;
     
@@ -159,9 +162,11 @@ public class MutipleTypeListAdapter1 extends ListAdapter<MutipleTypeObject> {
         });
       }
     }
+    
+
 #####（2）根据选择器去选择视图提供器
 此种方式通过调用adapter的register(ItemViewProvider2)方法去注册对应类型的视图提供器，与第一种方式不同的是，这种方式需要实现isForProvider方法，用来确定某个item是否使用当前视图提供器进行渲染，现在我们写一个有两种类型的item的adapter：
-
+######示例代码
     
     public class MutipleTypeListAdapter2 extends ListAdapter<MutipleTypeObject> {
     
