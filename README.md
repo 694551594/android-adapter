@@ -110,6 +110,7 @@ android极简adapter，支持list-adapter、expandable-list-adapter以及recycle
 - 这里使用ListAdapter举例说明，ExpandableListAdapter与RecyclerAdapter的类似。
 - 多type的adapter的创建方式是通过注册多种type的视图提供器，然后根据position与对应的entity去选择对应的视图提供器，然后进行视图的渲染与数据绑定。
 - 多type的adapter创建方式有两种，一种是根据key值注册视图提供器，一种是直接注册带选择器的视图提供器。这里分别举例说明：
+
 #####（1）根据key去注册视图提供器
 此种方式通过调用adapter的register(key，ItemViewProvider1)方法去注册对应类型的视图提供器，此外还需要通过setItemViewProviderKeyPolicy设置视图提供器key的选择策略，用来确定某个item该用哪个视图提供器进行渲染，现在我们写一个有两种类型的item的adapter：
 ######示例代码
