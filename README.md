@@ -207,3 +207,6 @@ android极简adapter，支持list-adapter、expandable-list-adapter以及recycle
 ```
 #####（3）以上两种方式，第一种方式去获取视图提供器的效率较高，第二种方式因为要轮询，所以效率较低，如果item type的数量较多，建议采用第一种方式去注册视图提供器。
 
+### 3、gradle配置方式：
+`compile 'cn.yhq:android-adapter:1.0.0'`
+`compile 'cn.yhq:android-recycler-adapter:1.0.0'`
