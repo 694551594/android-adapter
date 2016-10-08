@@ -1,5 +1,9 @@
 # android-adapter
 android极简adapter，支持list-adapter、expandable-list-adapter以及recycler-adapter，可以非常方便的创建单type以及多type的adapter。
+### gradle配置方式：
+`compile 'cn.yhq:android-adapter:1.0.0'`
+`compile 'cn.yhq:android-recycler-adapter:1.0.0'`
+
 ### 1、创建最简单的adapter（单type）
 #####（1）类似`List<T>`的数据(单List，即ListView或者GridView适配的adapter)，使用SimpleListAdapter即可，代码如下：
 ```java
@@ -207,6 +211,3 @@ android极简adapter，支持list-adapter、expandable-list-adapter以及recycle
 ```
 #####（3）以上两种方式，第一种方式去获取视图提供器的效率较高，第二种方式因为要轮询，所以效率较低，如果item type的数量较多，建议采用第一种方式去注册视图提供器。
 
-### 3、gradle配置方式：
-`compile 'cn.yhq:android-adapter:1.0.0'`
-`compile 'cn.yhq:android-recycler-adapter:1.0.0'`
