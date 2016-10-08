@@ -28,10 +28,10 @@ dependencies {
 }
 
 publish {
-    userOrg = '694551594'
-    groupId = 'cn.yhq'
     artifactId = 'android-recycler-adapter'
-    publishVersion = '1.0.0'
-    desc = 'android极简recycler-adapter'
-    website = 'https://github.com/694551594/android-adapter'
+    userOrg = rootProject.userOrg
+    groupId = rootProject.groupId
+    publishVersion = rootProject.publishVersion
+    desc = rootProject.description
+    website = rootProject.website
 }

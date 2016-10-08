@@ -19,7 +19,7 @@ public class SimpleRecyclerListAdapter<T> extends RecyclerListAdapter<T> {
 
   SimpleRecyclerListAdapter(Context context, List<T> items, final int itemViewLayoutId,
       final IItemViewSetup itemViewSetup) {
-    super(context);
+    super(context, items);
     this.register(new ItemViewProvider2<T>() {
       @Override
       public boolean isForProvider(int position, T entity) {
