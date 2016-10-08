@@ -31,4 +31,6 @@ public abstract class RecyclerAdapter<VH extends ViewHolder> extends RecyclerVie
       OnRecyclerViewItemClickListener onRecyclerViewItemClickListener) {
     this.onRecyclerViewItemClickListener = onRecyclerViewItemClickListener;
   }
+
+
 }

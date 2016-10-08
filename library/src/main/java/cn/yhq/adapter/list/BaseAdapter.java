@@ -42,14 +42,14 @@ public abstract class BaseAdapter<L, I> extends android.widget.BaseAdapter {
     return this;
   }
 
-  public final BaseAdapter<L, I> register(int key,
+  public BaseAdapter<L, I> register(int key,
       Class<? extends ItemViewProvider1<I>> itemViewProviderClass) {
     mItemViewProviderFactory.register(key, itemViewProviderClass);
     return this;
   }
 
-  public final BaseAdapter<L, I> setItemViewTypeKeyPolicy(
-      final IItemViewProviderKeyPolicy<I> itemViewProviderKeyPolicy) {
+  public final BaseAdapter<L, I> setItemViewProviderKeyPolicy(
+      IItemViewProviderKeyPolicy<I> itemViewProviderKeyPolicy) {
     this.mItemViewProviderFactory.setItemViewProviderKeyPolicy(itemViewProviderKeyPolicy);
     return this;
   }

@@ -70,4 +70,13 @@ public abstract class RecyclerBaseAdapter<L, I> extends RecyclerAdapter<ViewHold
     return this.mContext;
   }
 
+  public abstract void clearAllItem();
+
+  public abstract void addAllItem(L items);
+
+  public abstract void addItem(I item);
+
+  public abstract void removeItem(I item);
+
+  public abstract void removeItem(int position);
 }

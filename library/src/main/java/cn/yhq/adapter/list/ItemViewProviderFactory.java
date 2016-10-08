@@ -35,7 +35,7 @@ public final class ItemViewProviderFactory<T>
       @Override
       public int getItemViewKey() {
         if (mItemViewProviderKeyPolicy != null) {
-          return mItemViewProviderKeyPolicy.getItemViewTypeKey(position, entity);
+          return mItemViewProviderKeyPolicy.getItemViewProviderKey(position, entity);
         }
         return -1;
       }

@@ -12,13 +12,13 @@ public class SimpleExpandableListAdapter<G, C> extends BaseExpandableListAdapter
   private final IItemViewSetup<G, C> itemViewSetup;
 
   @Override
-  public final int getChildrenCount(int groupPosition) {
-    return itemViewSetup.getChildrenCount(groupPosition);
+  public C getChild(G group, int childPosition) {
+    return itemViewSetup.getChild(group, childPosition);
   }
 
   @Override
-  public final C getChild(int groupPosition, int childPosition) {
-    return itemViewSetup.getChild(groupPosition, childPosition);
+  public int getChildrenCount(G group) {
+    return itemViewSetup.getChildrenCount(group);
   }
 
   public interface IItemViewSetup<G, C> {
@@ -27,9 +27,9 @@ public class SimpleExpandableListAdapter<G, C> extends BaseExpandableListAdapter
     void setupChildView(ViewHolder viewHolder, int groupPosition, G groupEntity, int childPosition,
         C childEntity);
 
-    C getChild(int groupPosition, int childPosition);
+    C getChild(G group, int childPosition);
 
-    int getChildrenCount(int groupPosition);
+    int getChildrenCount(G group);
 
   }
 

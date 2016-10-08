@@ -40,8 +40,8 @@ public final class ItemViewProviderFactory<T>
   }
 
   public void setItemViewProviderKeyPolicy(
-      IItemViewProviderKeyPolicy<T> ItemViewProviderKeyPolicy) {
-    this.mItemViewProviderKeyPolicy = ItemViewProviderKeyPolicy;
+      IItemViewProviderKeyPolicy<T> itemViewProviderKeyPolicy) {
+    this.mItemViewProviderKeyPolicy = itemViewProviderKeyPolicy;
   }
 
   public int getItemViewType(int position, T entity) {

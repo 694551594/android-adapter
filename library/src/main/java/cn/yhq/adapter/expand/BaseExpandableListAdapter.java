@@ -33,6 +33,20 @@ public abstract class BaseExpandableListAdapter<G, C> extends BaseExpandableAdap
   }
 
   @Override
+  public C getChild(int groupPosition, int childPosition) {
+    return getChild(this.getGroup(groupPosition), childPosition);
+  }
+
+  @Override
+  public int getChildrenCount(int groupPosition) {
+    return getChildrenCount(this.getGroup(groupPosition));
+  }
+
+  public abstract C getChild(G group, int childPosition);
+
+  public abstract int getChildrenCount(G group);
+
+  @Override
   public void clearAllItem() {
     this.getListData().clear();
     this.notifyDataSetChanged();

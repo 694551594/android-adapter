@@ -30,7 +30,7 @@ public final class GroupItemViewProviderFactory<T>
       @Override
       public int getItemViewKey() {
         if (mGroupItemViewProviderKeyPolicy != null) {
-          return mGroupItemViewProviderKeyPolicy.getItemViewTypeKey(position, entity);
+          return mGroupItemViewProviderKeyPolicy.getItemViewProviderKey(position, entity);
         }
         return -1;
       }

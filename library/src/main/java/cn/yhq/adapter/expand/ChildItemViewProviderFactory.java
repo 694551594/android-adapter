@@ -31,7 +31,7 @@ public final class ChildItemViewProviderFactory<G, C>
       @Override
       public int getItemViewKey() {
         if (mChildItemViewProviderKeyPolicy != null) {
-          return mChildItemViewProviderKeyPolicy.getItemViewTypeKey(groupPosition, groupEntity,
+          return mChildItemViewProviderKeyPolicy.getItemViewProviderKey(groupPosition, groupEntity,
               childPosition, childEntity);
         }
         return -1;
