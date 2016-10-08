@@ -12,14 +12,14 @@ import cn.yhq.adapter.core.ItemViewFactory;
 
 
 public final class ItemViewProviderFactory<T>
-    extends ItemViewFactory<Adapter<ViewHolder>, ItemViewProvider<T>> {
+    extends ItemViewFactory<Adapter<ViewHolder>, ItemViewProvider1<T>> {
   private IItemViewProviderKeyPolicy<T> mItemViewProviderKeyPolicy;
 
   public ItemViewProviderFactory(Context context, Adapter<ViewHolder> adapter) {
     super(context, adapter);
   }
 
-  private ItemViewProvider<T> obtainItemViewProvider(final int position, final T entity) {
+  private ItemViewProvider1<T> obtainItemViewProvider(final int position, final T entity) {
     return this.obtainItemView(new IItemViewKeyPolicy() {
       @Override
       public int getItemViewKey() {
@@ -28,9 +28,9 @@ public final class ItemViewProviderFactory<T>
         }
         return -1;
       }
-    }, new IItemViewSelector<ItemViewProvider<T>>() {
+    }, new IItemViewSelector<ItemViewProvider1<T>>() {
       @Override
-      public boolean isForItemView(ItemViewProvider<T> itemView) {
+      public boolean isForItemView(ItemViewProvider1<T> itemView) {
         if (itemView instanceof IItemViewProviderSelector) {
           return ((IItemViewProviderSelector) itemView).isForProvider(position, entity);
         }

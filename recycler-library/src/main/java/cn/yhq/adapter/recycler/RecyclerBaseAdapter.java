@@ -29,12 +29,21 @@ public abstract class RecyclerBaseAdapter<L, I> extends RecyclerAdapter<ViewHold
     this.mItemViewProviderFactory.onBindViewHolder(holder, position, this.getItem(position));
   }
 
-  public final IItemViewProvider<I> register(int key, ItemViewProvider<I> itemViewProvider) {
+  public final IItemViewProvider<I> register(ItemViewProvider2<I> itemViewProvider) {
+    return mItemViewProviderFactory.register(itemViewProvider);
+  }
+
+  public final IItemViewProvider<I> register(
+      Class<? extends ItemViewProvider2<I>> itemViewProviderClass) {
+    return mItemViewProviderFactory.register(itemViewProviderClass);
+  }
+
+  public final IItemViewProvider<I> register(int key, ItemViewProvider1<I> itemViewProvider) {
     return mItemViewProviderFactory.register(key, itemViewProvider);
   }
 
   public final IItemViewProvider<I> register(int key,
-      Class<? extends ItemViewProvider<I>> itemViewProviderClass) {
+      Class<? extends ItemViewProvider1<I>> itemViewProviderClass) {
     return mItemViewProviderFactory.register(key, itemViewProviderClass);
   }
 
