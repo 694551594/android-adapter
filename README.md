@@ -13,7 +13,7 @@ android极简adapter，支持list-adapter、expandable-list-adapter以及recycle
             });
     listView.setAdapter(adapter);
 
-#####（2）类似List<List<T>>的数据（List里面嵌套List，即ExpandableListView适配的adapter），使用SimpleExpandableListAdapter即可，代码如下：
+#####（2）类似List<List>的数据（List里面嵌套List，即ExpandableListView适配的adapter），使用SimpleExpandableListAdapter即可，代码如下：
 
 
     SimpleExpandableListAdapter<Group, Child> adapter =
