@@ -15,6 +15,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".ExpandableListViewSingleActivity"></activity>
+        <activity android:name=".RecyclerListViewSingleActivity"></activity>
+        <activity android:name=".ListViewMutipleActivity"></activity>
+        <activity android:name=".ListViewSingleActivity"></activity>
+        <activity android:name=".RecyclerListViewMutipleActivity"></activity>
+        <activity android:name=".ExpandableListViewMutipleActivity"></activity>
     </application>
 
 </manifest>
