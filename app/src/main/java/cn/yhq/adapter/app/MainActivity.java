@@ -24,14 +24,6 @@ import cn.yhq.view.binding.provider.impl.TextViewBinding;
 
 public class MainActivity extends AppCompatActivity {
 
-    static {
-        ViewBinder.register(AppCompatCheckBox.class, new CheckBoxBinding());
-        ViewBinder.register(AppCompatTextView.class, new TextViewBinding());
-        ViewBinder.register(AppCompatButton.class, new TextViewBinding());
-        ViewBinder.register(AppCompatEditText.class, new TextViewBinding());
-        ViewBinder.register(AppCompatImageView.class, new ImageViewBinding());
-    }
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
