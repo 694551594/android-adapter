@@ -31,6 +31,8 @@ public final class ViewHolder {
   private int currentResId;
   // 当前的position
   private int mPosition;
+  // 当前的item是否是复用的item
+  private boolean isRecycler;
 
   ViewHolder(Context context, ViewGroup parent, int layoutId, int position) {
     this(context, LayoutInflater.from(context).inflate(layoutId, parent, false), position);
@@ -65,7 +67,16 @@ public final class ViewHolder {
 
     ViewHolder viewHolder = (ViewHolder) convertView.getTag();
     viewHolder.setPosition(position);
+    viewHolder.setRecycler(true);
     return viewHolder;
+  }
+
+  void setRecycler(boolean isRecycler) {
+    this.isRecycler = isRecycler;
+  }
+
+  public boolean isRecycler() {
+    return isRecycler;
   }
 
   public View getConvertView() {
@@ -76,7 +87,7 @@ public final class ViewHolder {
     return mPosition;
   }
 
-  public void setPosition(int position) {
+  void setPosition(int position) {
     this.mPosition = position;
   }
 
