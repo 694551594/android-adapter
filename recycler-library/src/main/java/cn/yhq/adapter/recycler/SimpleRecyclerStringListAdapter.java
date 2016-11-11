@@ -11,7 +11,7 @@ import java.util.Arrays;
 import java.util.List;
 
 
-public class SimpleRecyclerStringListAdapter<T> extends SimpleRecyclerListAdapter<String> {
+public class SimpleRecyclerStringListAdapter extends SimpleRecyclerListAdapter<String> {
 
   SimpleRecyclerStringListAdapter(Context context, List<String> items) {
     super(context, items, android.R.layout.simple_list_item_1,

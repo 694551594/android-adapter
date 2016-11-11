@@ -3,16 +3,18 @@ package cn.yhq.adapter.core;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
-import android.util.SparseArray;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.BaseAdapter;
 
 import java.io.File;
 
-import cn.yhq.view.binding.ViewBinder;
+import cn.yhq.view.binding.binder.BindType;
+import cn.yhq.view.binding.binder.DataBindProvider;
+import cn.yhq.view.binding.binder.DataBindProviderFactory;
+
+import static android.R.attr.id;
 
 
 /**
@@ -25,14 +27,14 @@ public final class ViewHolder {
   private Context mContext;
   // 根布局
   private View mConvertView;
-  // 子控件
-  private SparseArray<View> mViews = new SparseArray<View>();
   // 当前需要绑定的资源id
   private int currentResId;
   // 当前的position
   private int mPosition;
   // 当前的item是否是复用的item
   private boolean isRecycler;
+
+  private DataBindProvider binderProvider;
 
   ViewHolder(Context context, ViewGroup parent, int layoutId, int position) {
     this(context, LayoutInflater.from(context).inflate(layoutId, parent, false), position);
@@ -43,6 +45,7 @@ public final class ViewHolder {
     this.mPosition = position;
     this.mConvertView = convertView;
     this.mConvertView.setTag(this);
+    this.binderProvider = DataBindProviderFactory.create(convertView);
   }
 
   public static ViewHolder get(Context context, View convertView, int position) {
@@ -52,6 +55,7 @@ public final class ViewHolder {
   public static ViewHolder get(View convertView, int position) {
     ViewHolder viewHolder = (ViewHolder) convertView.getTag();
     viewHolder.setPosition(position);
+    viewHolder.setRecycler(true);
     return viewHolder;
   }
 
@@ -92,31 +96,15 @@ public final class ViewHolder {
   }
 
   /**
-   * 根据id查找控件视图，不使用缓存
-   * 
-   * @param id
-   * @return
-   */
-  public <T extends View> T findViewById(int id) {
-    bindResId(id);
-    return ViewBinder.findViewById(mConvertView, id);
-  }
-
-  /**
    * 获取控件视图，使用缓存
    * 
    * @param key
    * @return
    */
-  @SuppressWarnings("unchecked")
   public <T extends View> T getView(int key) {
-    View v = mViews.get(key);
-    if (v == null) {
-      v = findViewById(key);
-      mViews.put(key, v);
-    }
+    T view = this.binderProvider.getViewRender().getView(id);
     bindResId(key);
-    return (T) v;
+    return view;
   }
 
   public ViewHolder bindResId(int resId) {
@@ -125,174 +113,135 @@ public final class ViewHolder {
   }
 
   public ViewHolder bindTextData(int resId, CharSequence text) {
-    View v = this.getView(resId);
-    ViewBinder.bindTextData(v, text);
+    this.binderProvider.bind(resId, BindType.TEXT, text);
     return this;
   }
 
   public ViewHolder bindTextData(int resId, int text) {
-    View v = this.getView(resId);
-    ViewBinder.bindTextData(v, text);
+    this.binderProvider.bind(resId, BindType.TEXT, text);
     return this;
   }
 
   public ViewHolder bindCheckData(int resId, boolean checked) {
-    View v = this.getView(resId);
-    ViewBinder.bindCheckData(v, checked);
+    this.binderProvider.bind(resId, BindType.CHECKED, checked);
     return this;
   }
 
   public ViewHolder bindImageData(int resId, String url) {
-    View v = this.getView(resId);
-    ViewBinder.bindImageData(v, url);
+    this.binderProvider.bind(resId, BindType.IMAGE_URL, url);
     return this;
   }
 
   public ViewHolder bindImageData(int resId, Bitmap bitmap) {
-    View v = this.getView(resId);
-    ViewBinder.bindImageData(v, bitmap);
+    this.binderProvider.bind(resId, BindType.IMAGE_BITMAP, bitmap);
     return this;
   }
 
   public ViewHolder bindImageData(int resId, Drawable drawable) {
-    View v = this.getView(resId);
-    ViewBinder.bindImageData(v, drawable);
+    this.binderProvider.bind(resId, BindType.IMAGE_DRAWABLE, drawable);
     return this;
   }
 
   public ViewHolder bindImageData(int resId, File file) {
-    View v = this.getView(resId);
-    ViewBinder.bindImageData(v, file);
+    this.binderProvider.bind(resId, BindType.IMAGE_FILE, file);
     return this;
   }
 
   public ViewHolder bindImageData(int resId, int image) {
-    View v = this.getView(resId);
-    ViewBinder.bindImageData(v, image);
+    this.binderProvider.bind(resId, BindType.IMAGE_RESID, image);
     return this;
   }
 
   public ViewHolder setVisibility(int resId, int visibility) {
-    View v = this.getView(resId);
-    ViewBinder.setVisibility(v, visibility);
+    this.binderProvider.bind(resId, BindType.VISIBILITY, visibility);
     return this;
   }
 
-
   public ViewHolder bindTextData(CharSequence text) {
-    View v = this.getView(currentResId);
-    ViewBinder.bindTextData(v, text);
+    this.bindTextData(currentResId, text);
     return this;
   }
 
   public ViewHolder bindTextData(int text) {
-    View v = this.getView(currentResId);
-    ViewBinder.bindTextData(v, text);
+    this.bindTextData(currentResId, text);
     return this;
   }
 
   public ViewHolder bindCheckData(boolean checked) {
-    View v = this.getView(currentResId);
-    ViewBinder.bindCheckData(v, checked);
+    this.bindCheckData(currentResId, checked);
     return this;
   }
 
   public ViewHolder bindImageData(String url) {
-    View v = this.getView(currentResId);
-    ViewBinder.bindImageData(v, url);
+    this.bindImageData(currentResId, url);
     return this;
   }
 
   public ViewHolder bindImageData(Bitmap bitmap) {
-    View v = this.getView(currentResId);
-    ViewBinder.bindImageData(v, bitmap);
+    this.bindImageData(currentResId, bitmap);
     return this;
   }
 
   public ViewHolder bindImageData(Drawable drawable) {
-    View v = this.getView(currentResId);
-    ViewBinder.bindImageData(v, drawable);
+    this.bindImageData(currentResId, drawable);
     return this;
   }
 
   public ViewHolder bindImageData(File file) {
-    View v = this.getView(currentResId);
-    ViewBinder.bindImageData(v, file);
+    this.bindImageData(currentResId, file);
     return this;
   }
 
   public ViewHolder bindImageData(int image) {
-    View v = this.getView(currentResId);
-    ViewBinder.bindImageData(v, image);
+    this.bindImageData(currentResId, image);
     return this;
   }
 
   public ViewHolder setVisibility(int visibility) {
-    View v = this.getView(currentResId);
-    ViewBinder.setVisibility(v, visibility);
+    this.setVisibility(currentResId, visibility);
     return this;
   }
 
   public ViewHolder setOnItemLongClickListener(int resId,
       AdapterView.OnItemLongClickListener onItemLongClickListener) {
-    AdapterView<BaseAdapter> v = this.getView(resId);
-    v.setOnItemLongClickListener(onItemLongClickListener);
+    this.binderProvider.bind(resId, BindType.LISTENER_ITEM_LONG_CLICK, onItemLongClickListener);
     return this;
   }
 
   public ViewHolder setOnItemLongClickListener(
       AdapterView.OnItemLongClickListener onItemLongClickListener) {
-    AdapterView<BaseAdapter> v = this.getView(currentResId);
-    v.setOnItemLongClickListener(onItemLongClickListener);
+    this.setOnItemLongClickListener(currentResId, onItemLongClickListener);
     return this;
   }
 
   public ViewHolder setOnLongClickListener(View.OnLongClickListener onLongClickListener) {
-    View v = this.getView(currentResId);
-    v.setOnLongClickListener(onLongClickListener);
+    this.setOnLongClickListener(currentResId, onLongClickListener);
     return this;
   }
 
   public ViewHolder setOnLongClickListener(int resId,
       View.OnLongClickListener onLongClickListener) {
-    View v = this.getView(resId);
-    v.setOnLongClickListener(onLongClickListener);
+    this.binderProvider.bind(resId, BindType.LISTENER_LONG_CLICK, onLongClickListener);
     return this;
   }
 
   public ViewHolder setOnClickListener(View.OnClickListener onClickListener) {
-    View v = this.getView(currentResId);
-    v.setOnClickListener(onClickListener);
+    this.setOnClickListener(currentResId, onClickListener);
     return this;
   }
 
   public ViewHolder setOnClickListener(int resId, View.OnClickListener onClickListener) {
-    View v = this.getView(resId);
-    v.setOnClickListener(onClickListener);
+    this.binderProvider.bind(resId, BindType.LISTENER_CLICK, onClickListener);
     return this;
   }
 
   public ViewHolder setTag(int resId, Object tag) {
-    View v = this.getView(resId);
-    v.setTag(tag);
+    this.binderProvider.bind(resId, BindType.TAG, tag);
     return this;
   }
 
   public ViewHolder setTag(Object tag) {
-    View v = this.getView(currentResId);
-    v.setTag(tag);
-    return this;
-  }
-
-  public ViewHolder setKeyTag(int resId, int key, Object tag) {
-    View v = this.getView(resId);
-    v.setTag(key, tag);
-    return this;
-  }
-
-  public ViewHolder setKeyTag(int key, Object tag) {
-    View v = this.getView(currentResId);
-    v.setTag(key, tag);
+    this.setTag(currentResId, tag);
     return this;
   }
 }
