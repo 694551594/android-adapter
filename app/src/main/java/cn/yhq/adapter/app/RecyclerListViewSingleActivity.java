@@ -25,7 +25,7 @@ public class RecyclerListViewSingleActivity extends AppCompatActivity {
           @Override
           public void setupView(cn.yhq.adapter.recycler.ViewHolder viewHolder, int position,
               String entity) {
-            viewHolder.bindTextData(R.id.item_text, entity);
+            viewHolder.setText(R.id.item_text, entity);
           }
         });
 

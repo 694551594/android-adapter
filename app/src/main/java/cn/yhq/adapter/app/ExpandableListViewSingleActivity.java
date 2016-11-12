@@ -21,12 +21,12 @@ public class ExpandableListViewSingleActivity extends AppCompatActivity {
                 SimpleExpandableListAdapter.create(this, getDatas(), R.layout.layout_item, R.layout.layout_item, new SimpleExpandableListAdapter.IItemViewSetup<Group, Child>() {
                     @Override
                     public void setupGroupView(ViewHolder viewHolder, int position, Group entity, boolean isExpanded) {
-                        viewHolder.bindTextData(R.id.item_text, entity.text);
+                        viewHolder.setText(R.id.item_text, entity.text);
                     }
 
                     @Override
                     public void setupChildView(ViewHolder viewHolder, int groupPosition, Group groupEntity, int childPosition, Child childEntity) {
-                        viewHolder.bindTextData(R.id.item_text, childEntity.text);
+                        viewHolder.setText(R.id.item_text, childEntity.text);
                     }
 
                     @Override

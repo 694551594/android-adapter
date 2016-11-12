@@ -22,7 +22,6 @@ android {
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
-    compile 'cn.yhq:android-view-binding:1.1.0'
 }
 
 publish {

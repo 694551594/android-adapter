@@ -33,7 +33,7 @@ public class MutipleTypeRecyclerAdapter2 extends RecyclerListAdapter<MutipleType
       @Override
       public void onBindViewHolder(ViewHolder viewHolder, int position, MutipleTypeObject entity) {
         super.onBindViewHolder(viewHolder, position, entity);
-        viewHolder.bindTextData(R.id.item_text, entity.text);
+        viewHolder.setText(R.id.item_text, entity.text);
       }
     });
     // 注册类型2的视图提供器
@@ -51,7 +51,7 @@ public class MutipleTypeRecyclerAdapter2 extends RecyclerListAdapter<MutipleType
       @Override
       public void onBindViewHolder(ViewHolder viewHolder, int position, MutipleTypeObject entity) {
         super.onBindViewHolder(viewHolder, position, entity);
-        viewHolder.bindTextData(R.id.item_text, entity.text);
+        viewHolder.setText(R.id.item_text, entity.text);
       }
     });
 

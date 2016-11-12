@@ -30,7 +30,7 @@ public class MutipleTypeListAdapter2 extends ListAdapter<MutipleTypeObject> {
 
       @Override
       public void setupView(ViewHolder viewHolder, int position, MutipleTypeObject entity) {
-        viewHolder.bindTextData(R.id.item_text, entity.text);
+        viewHolder.setText(R.id.item_text, entity.text);
       }
     });
     // 注册类型2的视图提供器
@@ -47,7 +47,7 @@ public class MutipleTypeListAdapter2 extends ListAdapter<MutipleTypeObject> {
 
       @Override
       public void setupView(ViewHolder viewHolder, int position, MutipleTypeObject entity) {
-        viewHolder.bindTextData(R.id.item_text, entity.text);
+        viewHolder.setText(R.id.item_text, entity.text);
       }
     });
   }

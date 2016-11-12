@@ -3,11 +3,6 @@ package cn.yhq.adapter.app;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.AppCompatButton;
-import android.support.v7.widget.AppCompatCheckBox;
-import android.support.v7.widget.AppCompatEditText;
-import android.support.v7.widget.AppCompatImageView;
-import android.support.v7.widget.AppCompatTextView;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
@@ -17,10 +12,6 @@ import java.util.List;
 
 import cn.yhq.adapter.core.ViewHolder;
 import cn.yhq.adapter.list.SimpleListAdapter;
-import cn.yhq.view.binding.ViewBinder;
-import cn.yhq.view.binding.provider.impl.CheckBoxBinding;
-import cn.yhq.view.binding.provider.impl.ImageViewBinding;
-import cn.yhq.view.binding.provider.impl.TextViewBinding;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -33,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
                 new SimpleListAdapter.IItemViewSetup<String>() {
                     @Override
                     public void setupView(ViewHolder viewHolder, int position, String entity) {
-                        viewHolder.bindTextData(R.id.item_text, entity);
+                        viewHolder.setText(R.id.item_text, entity);
                     }
                 });
         listView.setAdapter(adapter);

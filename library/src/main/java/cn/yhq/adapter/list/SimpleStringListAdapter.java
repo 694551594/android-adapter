@@ -23,7 +23,7 @@ public class SimpleStringListAdapter extends SimpleListAdapter<String> {
 
           @Override
           public void setupView(ViewHolder viewHolder, int position, String entity) {
-            viewHolder.bindTextData(android.R.id.text1, entity);
+            viewHolder.setText(android.R.id.text1, entity);
           }
         });
   }

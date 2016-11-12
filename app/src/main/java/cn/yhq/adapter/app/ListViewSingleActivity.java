@@ -21,7 +21,7 @@ public class ListViewSingleActivity extends AppCompatActivity {
                 new SimpleListAdapter.IItemViewSetup<String>() {
                     @Override
                     public void setupView(ViewHolder viewHolder, int position, String entity) {
-                        viewHolder.bindTextData(R.id.item_text, entity);
+                        viewHolder.setText(R.id.item_text, entity);
                     }
                 });
         listView.setAdapter(adapter);

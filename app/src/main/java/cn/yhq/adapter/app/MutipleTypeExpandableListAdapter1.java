@@ -32,7 +32,7 @@ public class MutipleTypeExpandableListAdapter1
       @Override
       public void setupView(ViewHolder viewHolder, int position, MutipleTypeGroupObject entity,
           boolean expand) {
-        viewHolder.bindTextData(R.id.item_text, entity.text);
+        viewHolder.setText(R.id.item_text, entity.text);
       }
     });
     // 注册类型2的视图提供器
@@ -45,7 +45,7 @@ public class MutipleTypeExpandableListAdapter1
       @Override
       public void setupView(ViewHolder viewHolder, int position, MutipleTypeGroupObject entity,
           boolean expand) {
-        viewHolder.bindTextData(R.id.item_text, entity.text);
+        viewHolder.setText(R.id.item_text, entity.text);
       }
     });
     // 注册类型1的视图提供器
@@ -60,7 +60,7 @@ public class MutipleTypeExpandableListAdapter1
           public void setupView(ViewHolder viewHolder, int groupPosition,
               MutipleTypeGroupObject groupEntity, int childPosition,
               MutipleTypeChildObject childEntity) {
-            viewHolder.bindTextData(R.id.item_text, childEntity.text);
+            viewHolder.setText(R.id.item_text, childEntity.text);
           }
         });
     // 注册类型2的视图提供器
@@ -75,7 +75,7 @@ public class MutipleTypeExpandableListAdapter1
           public void setupView(ViewHolder viewHolder, int groupPosition,
               MutipleTypeGroupObject groupEntity, int childPosition,
               MutipleTypeChildObject childEntity) {
-            viewHolder.bindTextData(R.id.item_text, childEntity.text);
+            viewHolder.setText(R.id.item_text, childEntity.text);
           }
         });
     // 设置视图提供器的选择策略
