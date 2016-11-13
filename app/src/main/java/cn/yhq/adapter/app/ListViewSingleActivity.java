@@ -1,7 +1,6 @@
 package cn.yhq.adapter.app;
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.widget.ListView;
 
 import java.util.ArrayList;
@@ -9,13 +8,13 @@ import java.util.List;
 
 import cn.yhq.adapter.core.ViewHolder;
 import cn.yhq.adapter.list.SimpleListAdapter;
+import cn.yhq.base.BaseActivity;
 
-public class ListViewSingleActivity extends AppCompatActivity {
+public class ListViewSingleActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_simple);
         ListView listView = (ListView) this.findViewById(R.id.simple_listview);
         SimpleListAdapter<String> adapter = SimpleListAdapter.create(this, getDatas(), R.layout.layout_item,
                 new SimpleListAdapter.IItemViewSetup<String>() {
@@ -25,6 +24,11 @@ public class ListViewSingleActivity extends AppCompatActivity {
                     }
                 });
         listView.setAdapter(adapter);
+    }
+
+    @Override
+    protected int getContentViewLayoutId() {
+        return R.layout.activity_simple;
     }
 
     private List<String> getDatas() {

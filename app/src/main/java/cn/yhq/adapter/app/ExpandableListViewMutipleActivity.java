@@ -1,23 +1,28 @@
 package cn.yhq.adapter.app;
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.widget.ExpandableListView;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class ExpandableListViewMutipleActivity extends AppCompatActivity {
+import cn.yhq.base.BaseActivity;
+
+public class ExpandableListViewMutipleActivity extends BaseActivity {
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
-    setContentView(R.layout.activity_expandable_list_view);
     ExpandableListView expandableListView =
         (ExpandableListView) this.findViewById(R.id.simple_expandable_listview);
     MutipleTypeExpandableListAdapter1 adapter =
         new MutipleTypeExpandableListAdapter1(this, getDatas());
     expandableListView.setAdapter(adapter);
+  }
+
+  @Override
+  protected int getContentViewLayoutId() {
+    return R.layout.activity_expandable_list_view;
   }
 
   private List<MutipleTypeGroupObject> getDatas() {

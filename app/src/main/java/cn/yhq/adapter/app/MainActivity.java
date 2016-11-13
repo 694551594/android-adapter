@@ -2,7 +2,6 @@ package cn.yhq.adapter.app;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
@@ -12,13 +11,20 @@ import java.util.List;
 
 import cn.yhq.adapter.core.ViewHolder;
 import cn.yhq.adapter.list.SimpleListAdapter;
+import cn.yhq.base.BaseActivity;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends BaseActivity {
+
+    @Override
+    protected void onConfig(Config config) {
+        super.onConfig(config);
+        config.setSwipeBackWrapper(false);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        this.getSupportActionBar().setDisplayHomeAsUpEnabled(false);
         ListView listView = (ListView) this.findViewById(R.id.simple_listview);
         SimpleListAdapter<String> adapter = SimpleListAdapter.create(this, getDatas(), R.layout.layout_item,
                 new SimpleListAdapter.IItemViewSetup<String>() {
@@ -55,6 +61,11 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+    }
+
+    @Override
+    protected int getContentViewLayoutId() {
+        return R.layout.activity_main;
     }
 
     List<String> getDatas() {

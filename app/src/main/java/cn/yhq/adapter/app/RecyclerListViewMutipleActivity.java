@@ -1,19 +1,19 @@
 package cn.yhq.adapter.app;
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class RecyclerListViewMutipleActivity extends AppCompatActivity {
+import cn.yhq.base.BaseActivity;
+
+public class RecyclerListViewMutipleActivity extends BaseActivity {
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
-    setContentView(R.layout.activity_recycler_view);
 
     RecyclerView recyclerView = (RecyclerView) this.findViewById(R.id.simple_recycler);
     recyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -22,6 +22,11 @@ public class RecyclerListViewMutipleActivity extends AppCompatActivity {
     MutipleTypeRecyclerAdapter2 adapter2 = new MutipleTypeRecyclerAdapter2(this, getDatas());
 
     recyclerView.setAdapter(adapter1);
+  }
+
+  @Override
+  protected int getContentViewLayoutId() {
+    return R.layout.activity_recycler_view;
   }
 
   private List<MutipleTypeObject> getDatas() {

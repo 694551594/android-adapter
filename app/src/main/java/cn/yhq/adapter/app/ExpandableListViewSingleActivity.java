@@ -1,7 +1,6 @@
 package cn.yhq.adapter.app;
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.widget.ExpandableListView;
 
 import java.util.ArrayList;
@@ -9,13 +8,13 @@ import java.util.List;
 
 import cn.yhq.adapter.core.ViewHolder;
 import cn.yhq.adapter.expand.SimpleExpandableListAdapter;
+import cn.yhq.base.BaseActivity;
 
-public class ExpandableListViewSingleActivity extends AppCompatActivity {
+public class ExpandableListViewSingleActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_expandable_list_view);
         ExpandableListView expandableListView = (ExpandableListView) this.findViewById(R.id.simple_expandable_listview);
         SimpleExpandableListAdapter<Group, Child> adapter =
                 SimpleExpandableListAdapter.create(this, getDatas(), R.layout.layout_item, R.layout.layout_item, new SimpleExpandableListAdapter.IItemViewSetup<Group, Child>() {
@@ -40,6 +39,11 @@ public class ExpandableListViewSingleActivity extends AppCompatActivity {
                     }
                 });
         expandableListView.setAdapter(adapter);
+    }
+
+    @Override
+    protected int getContentViewLayoutId() {
+        return R.layout.activity_expandable_list_view;
     }
 
     private List<Group> getDatas() {

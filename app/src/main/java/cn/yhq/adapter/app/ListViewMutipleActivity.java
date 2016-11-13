@@ -1,22 +1,27 @@
 package cn.yhq.adapter.app;
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.widget.ListView;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class ListViewMutipleActivity extends AppCompatActivity {
+import cn.yhq.base.BaseActivity;
+
+public class ListViewMutipleActivity extends BaseActivity {
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
-    setContentView(R.layout.activity_simple);
     ListView listView = (ListView) this.findViewById(R.id.simple_listview);
     MutipleTypeListAdapter1 adapter1 = new MutipleTypeListAdapter1(this, getDatas());
     MutipleTypeListAdapter2 adapter2 = new MutipleTypeListAdapter2(this, getDatas());
     listView.setAdapter(adapter1);
+  }
+
+  @Override
+  protected int getContentViewLayoutId() {
+    return R.layout.activity_simple;
   }
 
   private List<MutipleTypeObject> getDatas() {
