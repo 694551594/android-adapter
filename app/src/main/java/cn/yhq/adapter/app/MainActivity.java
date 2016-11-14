@@ -6,9 +6,11 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
+import cn.yhq.adapter.core.ImageLoader;
 import cn.yhq.adapter.core.ViewHolder;
 import cn.yhq.adapter.list.SimpleListAdapter;
 import cn.yhq.base.BaseActivity;
@@ -26,6 +28,17 @@ public class MainActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         this.getSupportActionBar().setDisplayHomeAsUpEnabled(false);
         ListView listView = (ListView) this.findViewById(R.id.simple_listview);
+        ViewHolder.setImageLoader(new ImageLoader() {
+            @Override
+            public void setImage(View imageView, File file) {
+
+            }
+
+            @Override
+            public void setImage(View imageView, String url) {
+
+            }
+        });
         SimpleListAdapter<String> adapter = SimpleListAdapter.create(this, getDatas(), R.layout.layout_item,
                 new SimpleListAdapter.IItemViewSetup<String>() {
                     @Override

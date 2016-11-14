@@ -2,8 +2,8 @@
 android极简adapter，支持list-adapter、expandable-list-adapter以及recycler-adapter，可以非常方便的创建单type以及多type的adapter。
 
 ## gradle配置方式：
-- `compile 'cn.yhq:android-adapter:1.0.3'`
-- `compile 'cn.yhq:android-recycler-adapter:1.0.3'`
+- `compile 'cn.yhq:android-adapter:1.1.0'`
+- `compile 'cn.yhq:android-recycler-adapter:1.1.0'`
 
 ## 使用方式：
 ### 1、创建最简单的adapter（单type）
@@ -214,10 +214,14 @@ android极简adapter，支持list-adapter、expandable-list-adapter以及recycle
 #####（3）以上两种方式，第一种方式去获取视图提供器的效率较高，第二种方式因为要轮询，所以效率较低，如果item type的数量较多，建议采用第一种方式去注册视图提供器。
 
 ### 3、对于item图片的处理：
-目前ViewHolder里面只提供系统本身的api封装，没有封装第三方的图片处理框架，但是ViewHolder是调用了我的另外一个库[AndroidViewBinding](https://github.com/694551594/AndroidViewBinding "AndroidViewBinding")，所以可以根据你自己项目里面所使用的图片处理框架去注册一下即可：
+ ViewHolder.setImageLoader(new ImageLoader() {
+            @Override
+            public void setImage(View imageView, File file) {
+                
+            }
 
-```java
-ViewBinder.register(ImageView.class, new CustomImageViewBinding());
-ViewBinder.register(AppCompatImageView.class, new CustomImageViewBinding());
+            @Override
+            public void setImage(View imageView, String url) {
 
-```
+            }
+});
