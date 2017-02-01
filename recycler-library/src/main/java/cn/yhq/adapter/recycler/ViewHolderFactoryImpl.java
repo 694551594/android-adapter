@@ -10,7 +10,7 @@ import android.view.View;
 public class ViewHolderFactoryImpl implements ViewHolderFactory<ViewHolder> {
 
     @Override
-    public ViewHolder createViewHolder(View itemView) {
+    public ViewHolder createViewHolder(View itemView, int viewType) {
         return new ViewHolder(itemView);
     }
 

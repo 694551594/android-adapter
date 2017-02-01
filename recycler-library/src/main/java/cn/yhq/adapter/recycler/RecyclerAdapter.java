@@ -16,7 +16,7 @@ public abstract class RecyclerAdapter<VH extends ViewHolder> extends RecyclerVie
   @Override
   public final VH onCreateViewHolder(ViewGroup parent, int viewType) {
     View itemView = onCreateView(parent, viewType);
-    ViewHolder viewHolder = mViewHolderFactory.createViewHolder(itemView);
+    ViewHolder viewHolder = mViewHolderFactory.createViewHolder(itemView, viewType);
     viewHolder.setOnRecyclerViewItemClickListener(onRecyclerViewItemClickListener);
     viewHolder.setOnRecyclerViewItemLongClickListener(onRecyclerViewItemLongClickListener);
     return (VH) viewHolder;

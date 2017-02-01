@@ -8,6 +8,6 @@ import android.view.View;
 
 public interface ViewHolderFactory<T extends ViewHolder> {
 
-    T createViewHolder(View itemView);
+    T createViewHolder(View itemView, int viewType);
 
 }
