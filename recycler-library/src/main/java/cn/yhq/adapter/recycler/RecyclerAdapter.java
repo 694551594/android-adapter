@@ -34,5 +34,8 @@ public abstract class RecyclerAdapter<VH extends ViewHolder> extends RecyclerVie
     this.onRecyclerViewItemClickListener = onRecyclerViewItemClickListener;
   }
 
+  public static <T extends ViewHolder> void setViewHolderFactory(ViewHolderFactory<T> factory) {
+    mViewHolderFactory = factory;
+  }
 
 }

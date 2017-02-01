@@ -3,12 +3,8 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/android-adapter.iml" filepath="$PROJECT_DIR$/android-adapter.iml" />
-      <module fileurl="file://$PROJECT_DIR$/android-adapter.iml" filepath="$PROJECT_DIR$/android-adapter.iml" />
-      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/library/library.iml" filepath="$PROJECT_DIR$/library/library.iml" />
-      <module fileurl="file://$PROJECT_DIR$/library/library.iml" filepath="$PROJECT_DIR$/library/library.iml" />
-      <module fileurl="file://$PROJECT_DIR$/recycler-library/recycler-library.iml" filepath="$PROJECT_DIR$/recycler-library/recycler-library.iml" />
       <module fileurl="file://$PROJECT_DIR$/recycler-library/recycler-library.iml" filepath="$PROJECT_DIR$/recycler-library/recycler-library.iml" />
     </modules>
   </component>
