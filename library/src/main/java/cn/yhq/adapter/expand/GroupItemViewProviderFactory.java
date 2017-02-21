@@ -11,10 +11,13 @@ import cn.yhq.adapter.core.IItemViewKeyPolicy;
 import cn.yhq.adapter.core.IItemViewSelector;
 import cn.yhq.adapter.core.ItemViewFactory;
 import cn.yhq.adapter.core.ViewHolder;
+import cn.yhq.adapter.core.ViewHolderFactory;
+import cn.yhq.adapter.core.ViewHolderFactoryImpl;
 
 public final class GroupItemViewProviderFactory<T>
     extends ItemViewFactory<BaseExpandableListAdapter, GroupItemViewProvider1<T>> {
   private IGroupItemViewProviderKeyPolicy<T> mGroupItemViewProviderKeyPolicy;
+  private static ViewHolderFactory<? extends ViewHolder> mViewHolderFactory = new ViewHolderFactoryImpl();
 
   public GroupItemViewProviderFactory(Context context, BaseExpandableListAdapter adapter) {
     super(context, adapter);
@@ -65,7 +68,7 @@ public final class GroupItemViewProviderFactory<T>
       // 获取视图id
       int layoutId = itemViewProvider.getItemViewLayoutId();
       // 获取viewholder
-      ViewHolder viewHolder = ViewHolder.get(mContext, convertView, parent, layoutId, position);
+      ViewHolder viewHolder = mViewHolderFactory.createViewHolder(mContext, convertView, parent, layoutId, position);
       // 组装视图
       itemViewProvider.setupView(viewHolder, position, entity, isExpanded);
       return viewHolder.getConvertView();
@@ -77,5 +80,9 @@ public final class GroupItemViewProviderFactory<T>
 
   public final GroupItemViewProvider1<T> getItemViewProviderByKey(int key) {
     return this.getItemViewByKey(key);
+  }
+
+  public static <T extends ViewHolder> void setViewHolderFactory(ViewHolderFactory<T> factory) {
+    mViewHolderFactory = factory;
   }
 }

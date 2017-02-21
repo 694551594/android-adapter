@@ -8,6 +8,9 @@ import android.view.ViewGroup;
 import java.util.ArrayList;
 import java.util.List;
 
+import cn.yhq.adapter.core.ViewHolder;
+import cn.yhq.adapter.core.ViewHolderFactory;
+
 public abstract class BaseExpandableAdapter<L, G, C>
     extends android.widget.BaseExpandableListAdapter {
   protected L mListData;
@@ -38,6 +41,14 @@ public abstract class BaseExpandableAdapter<L, G, C>
       IGroupItemViewProviderKeyPolicy<G> itemViewProviderKeyPolicy) {
     this.mGroupItemViewProviderFactory.setGroupItemViewProviderKeyPolicy(itemViewProviderKeyPolicy);
     return this;
+  }
+
+  public static <T extends ViewHolder> void setGroupViewHolderFactory(ViewHolderFactory<T> factory) {
+    GroupItemViewProviderFactory.setViewHolderFactory(factory);
+  }
+
+  public static <T extends ViewHolder> void setChildViewHolderFactory(ViewHolderFactory<T> factory) {
+    ChildItemViewProviderFactory.setViewHolderFactory(factory);
   }
 
   public final BaseExpandableAdapter<L, G, C> register(int key,

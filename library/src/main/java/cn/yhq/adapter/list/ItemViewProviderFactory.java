@@ -11,6 +11,8 @@ import cn.yhq.adapter.core.IItemViewKeyPolicy;
 import cn.yhq.adapter.core.IItemViewSelector;
 import cn.yhq.adapter.core.ItemViewFactory;
 import cn.yhq.adapter.core.ViewHolder;
+import cn.yhq.adapter.core.ViewHolderFactory;
+import cn.yhq.adapter.core.ViewHolderFactoryImpl;
 
 /**
  * listview-adapter item视图提供器工厂类
@@ -20,6 +22,7 @@ import cn.yhq.adapter.core.ViewHolder;
 public final class ItemViewProviderFactory<T>
     extends ItemViewFactory<BaseAdapter, ItemViewProvider1<T>> {
   private IItemViewProviderKeyPolicy<T> mItemViewProviderKeyPolicy;
+  private static ViewHolderFactory<? extends ViewHolder> mViewHolderFactory = new ViewHolderFactoryImpl();
 
   public ItemViewProviderFactory(Context context, BaseAdapter adapter) {
     super(context, adapter);
@@ -69,7 +72,7 @@ public final class ItemViewProviderFactory<T>
       // 获取视图id
       int layoutId = itemViewProvider.getItemViewLayoutId();
       // 获取viewholder
-      ViewHolder viewHolder = ViewHolder.get(mContext, convertView, parent, layoutId, position);
+      ViewHolder viewHolder = mViewHolderFactory.createViewHolder(mContext, convertView, parent, layoutId, position);
       // 组装视图
       itemViewProvider.setupView(viewHolder, position, entity);
       return viewHolder.getConvertView();
@@ -82,6 +85,10 @@ public final class ItemViewProviderFactory<T>
 
   public final ItemViewProvider1<T> getItemViewProviderByKey(int key) {
     return this.getItemViewByKey(key);
+  }
+
+  public static <T extends ViewHolder> void setViewHolderFactory(ViewHolderFactory<T> factory) {
+    mViewHolderFactory = factory;
   }
 
 }

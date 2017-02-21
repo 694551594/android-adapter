@@ -7,6 +7,9 @@ import android.view.ViewGroup;
 import java.util.ArrayList;
 import java.util.List;
 
+import cn.yhq.adapter.core.ViewHolder;
+import cn.yhq.adapter.core.ViewHolderFactory;
+
 /**
  * base adapter
  * 
@@ -35,6 +38,10 @@ public abstract class BaseAdapter<L, I> extends android.widget.BaseAdapter {
 
   public BaseAdapter(Context context) {
     this(context, null);
+  }
+
+  public static <T extends ViewHolder> void setViewHolderFactory(ViewHolderFactory<T> factory) {
+    ItemViewProviderFactory.setViewHolderFactory(factory);
   }
 
   public final BaseAdapter<L, I> register(int key, ItemViewProvider1<I> itemViewProvider) {
@@ -128,5 +135,6 @@ public abstract class BaseAdapter<L, I> extends android.widget.BaseAdapter {
   public final ItemViewProvider1<I> getItemViewProvider(int key) {
     return mItemViewProviderFactory.getItemViewProviderByKey(key);
   }
+
 
 }
