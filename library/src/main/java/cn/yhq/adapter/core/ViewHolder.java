@@ -11,7 +11,6 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.Checkable;
 import android.widget.CompoundButton;
-import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.RadioGroup;
 import android.widget.RatingBar;
@@ -36,7 +35,7 @@ public final class ViewHolder {
   // 当前的item是否是复用的item
   private boolean isRecycler;
   private SparseArray<View> views = new SparseArray<>();
-  private static ImageLoader mImageLoader;
+  private static ImageLoader mImageLoader = new DefaultImageLoader();
 
   public static void setImageLoader(ImageLoader imageLoader) {
     mImageLoader = imageLoader;
@@ -223,20 +222,23 @@ public final class ViewHolder {
   }
 
   public ViewHolder setImage(int viewId, int resId) {
-    ImageView view = getView(viewId);
-    view.setImageResource(resId);
+    if (mImageLoader != null) {
+      mImageLoader.setImage(this.getView(viewId), resId);
+    }
     return this;
   }
 
   public ViewHolder setImage(int viewId, Bitmap bitmap) {
-    ImageView view = getView(viewId);
-    view.setImageBitmap(bitmap);
+    if (mImageLoader != null) {
+      mImageLoader.setImage(this.getView(viewId), bitmap);
+    }
     return this;
   }
 
   public ViewHolder setImage(int viewId, Drawable drawable) {
-    ImageView view = getView(viewId);
-    view.setImageDrawable(drawable);
+    if (mImageLoader != null) {
+      mImageLoader.setImage(this.getView(viewId), drawable);
+    }
     return this;
   }
 

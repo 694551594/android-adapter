@@ -9,7 +9,6 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Checkable;
 import android.widget.CompoundButton;
-import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.RadioGroup;
 import android.widget.RatingBar;
@@ -17,13 +16,14 @@ import android.widget.TextView;
 
 import java.io.File;
 
+import cn.yhq.adapter.core.DefaultImageLoader;
 import cn.yhq.adapter.core.ImageLoader;
 
 
 public class ViewHolder extends RecyclerView.ViewHolder {
   // 子控件
   private int currentResId;
-  private static ImageLoader mImageLoader;
+  private static ImageLoader mImageLoader = new DefaultImageLoader();
   private SparseArray<View> views = new SparseArray<>();
 
   public ViewHolder(View itemView) {
@@ -183,20 +183,23 @@ public class ViewHolder extends RecyclerView.ViewHolder {
   }
 
   public ViewHolder setImage(int viewId, int resId) {
-    ImageView view = getView(viewId);
-    view.setImageResource(resId);
+    if (mImageLoader != null) {
+      mImageLoader.setImage(this.getView(viewId), resId);
+    }
     return this;
   }
 
   public ViewHolder setImage(int viewId, Bitmap bitmap) {
-    ImageView view = getView(viewId);
-    view.setImageBitmap(bitmap);
+    if (mImageLoader != null) {
+      mImageLoader.setImage(this.getView(viewId), bitmap);
+    }
     return this;
   }
 
   public ViewHolder setImage(int viewId, Drawable drawable) {
-    ImageView view = getView(viewId);
-    view.setImageDrawable(drawable);
+    if (mImageLoader != null) {
+      mImageLoader.setImage(this.getView(viewId), drawable);
+    }
     return this;
   }
 
