@@ -1,6 +1,8 @@
 package cn.yhq.adapter.app;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -36,6 +38,21 @@ public class MainActivity extends BaseActivity {
 
             @Override
             public void setImage(View imageView, String url) {
+
+            }
+
+            @Override
+            public void setImage(View imageView, int resId) {
+
+            }
+
+            @Override
+            public void setImage(View imageView, Bitmap bitmap) {
+
+            }
+
+            @Override
+            public void setImage(View imageView, Drawable drawable) {
 
             }
         });

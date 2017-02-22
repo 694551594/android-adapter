@@ -33,7 +33,7 @@ task clean(type: Delete) {
 ext {
     userOrg = '694551594'
     groupId = 'cn.yhq'
-    publishVersion = '1.3.0'
+    publishVersion = '1.4.0'
     desc = 'android极简adapter'
     website = 'https://github.com/694551594/android-adapter'
 }
