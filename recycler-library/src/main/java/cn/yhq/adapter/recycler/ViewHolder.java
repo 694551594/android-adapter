@@ -170,6 +170,17 @@ public class ViewHolder extends RecyclerView.ViewHolder {
     return this;
   }
 
+  public ViewHolder setEnabled(boolean enabled) {
+    setEnabled(currentResId, enabled);
+    return this;
+  }
+
+  public ViewHolder setEnabled(int viewId, boolean enabled) {
+    View view = getView(viewId);
+    view.setEnabled(enabled);
+    return this;
+  }
+
   public ViewHolder setText(int viewId, CharSequence text) {
     TextView tv = getView(viewId);
     tv.setText(text);

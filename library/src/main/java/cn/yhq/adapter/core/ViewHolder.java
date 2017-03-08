@@ -381,6 +381,17 @@ public final class ViewHolder {
     return this;
   }
 
+  public ViewHolder setEnabled(boolean enabled) {
+    setEnabled(currentResId, enabled);
+    return this;
+  }
+
+  public ViewHolder setEnabled(int viewId, boolean enabled) {
+    View view = getView(viewId);
+    view.setEnabled(enabled);
+    return this;
+  }
+
   /**
    * 关于事件的
    */
