@@ -6,7 +6,7 @@ import cn.yhq.adapter.core.ItemView;
 
 
 public abstract class GroupItemViewProvider1<G> extends ItemView<BaseExpandableListAdapter>
-    implements
+        implements
         IGroupItemViewProvider<G> {
 
 }

@@ -8,7 +8,7 @@ import cn.yhq.adapter.core.ItemView;
  * @param <T>
  */
 public abstract class ItemViewProvider1<T> extends ItemView<android.widget.BaseAdapter>
-    implements
-      IItemViewProvider<T> {
+        implements
+        IItemViewProvider<T> {
 
 }

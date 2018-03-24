@@ -6,8 +6,8 @@ package cn.yhq.adapter.recycler;
  * @param <T>
  */
 public abstract class ItemViewProvider2<T> extends ItemViewProvider1<T>
-    implements
-      IItemViewProviderSelector<T> {
+        implements
+        IItemViewProviderSelector<T> {
 
 
 }

@@ -6,8 +6,8 @@ import cn.yhq.adapter.core.ItemView;
 
 
 public class ItemViewProvider1<T> extends ItemView<RecyclerView.Adapter<ViewHolder>>
-    implements
-      IItemViewProvider<T> {
+        implements
+        IItemViewProvider<T> {
 
     @Override
     public int getItemViewLayoutId() {

@@ -5,17 +5,17 @@ package cn.yhq.adapter.core;
  */
 
 public class ItemData {
-  private Object data;
+    private Object data;
 
-  public ItemData(Object data) {
-    this.data = data;
-  }
+    public ItemData(Object data) {
+        this.data = data;
+    }
 
-  public <T> T getData() {
-    return (T) data;
-  }
+    public <T> T getData() {
+        return (T) data;
+    }
 
-  public boolean isInstance(Object data) {
-    return this.data.getClass() == data.getClass();
-  }
+    public boolean isInstance(Object data) {
+        return this.data.getClass() == data.getClass();
+    }
 }

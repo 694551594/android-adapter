@@ -5,21 +5,21 @@ import cn.yhq.adapter.core.ViewHolder;
 
 public interface IItemViewProvider<T> {
 
-  /**
-   * 获取视图id
-   *
-   * @return
+    /**
+     * 获取视图id
+     *
+     * @return
      */
-  int getItemViewLayoutId();
+    int getItemViewLayoutId();
 
-  /**
-   * 组装View
-   * 
-   * @param viewHolder
-   * @param position
-   * @param entity
-   */
-  void setupView(ViewHolder viewHolder, int position, T entity);
+    /**
+     * 组装View
+     *
+     * @param viewHolder
+     * @param position
+     * @param entity
+     */
+    void setupView(ViewHolder viewHolder, int position, T entity);
 
 
 }
